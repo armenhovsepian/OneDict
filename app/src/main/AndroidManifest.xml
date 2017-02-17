@@ -11,10 +11,28 @@
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity android:name=".IdiomsActivity">
+        </activity>
+
+        <activity android:name=".CommonActivity">
+        </activity>
+
+        <activity android:name=".AntitheticalActivity">
+        </activity>
+
+        <activity android:name=".SynonymousActivity">
+        </activity>
+
+        <activity android:name=".VerbsActivity">
+        </activity>
+
+        <activity android:name=".WordsActivity">
+        </activity>
+
     </application>
 
 </manifest>

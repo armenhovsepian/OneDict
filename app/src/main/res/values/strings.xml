@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">One Dic</string>
+    <string name="antithetical">Antithetical\nمتضاد</string>
+    <string name="synonymous">Synonymous\nمترادف</string>
+    <string name="idioms">Idioms\nاصطلاحات</string>
+    <string name="common">Common\nعبارات رایج</string>
+    <string name="words">Words\nلغات</string>
+    <string name="verbs">Verbs\nافعال</string>
 </resources>
