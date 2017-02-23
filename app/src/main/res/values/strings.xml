@@ -1,9 +1,27 @@
 <resources>
     <string name="app_name">One Dic</string>
-    <string name="antithetical">Antithetical\nمتضاد</string>
-    <string name="synonymous">Synonymous\nمترادف</string>
+    <string name="antonym">Antonym\nمتضاد</string>
+    <string name="synonym">Synonym\nمترادف</string>
     <string name="idioms">Idioms\nاصطلاحات</string>
     <string name="common">Common\nعبارات رایج</string>
     <string name="words">Words\nلغات</string>
     <string name="verbs">Verbs\nافعال</string>
+
+
+    <string name="lblWord">کلمه</string>
+    <string name="lblTranslate">ترجمه</string>
+    <string name="lblDescription">توضیحات</string>
+    <string name="lblPronunciation">تلفظ</string>
+    <string name="lblIdiom">اصطلاح</string>
+    <string name="lblCommon">عبارت</string>
+    <string name="lblVerb">فعل</string>
+
+
+    <string name="save">ذخیره</string>
+
+    <string-array name="category_array">
+        <item>Computer</item>
+        <item>Math</item>
+        <item>Judge</item>
+    </string-array>
 </resources>
