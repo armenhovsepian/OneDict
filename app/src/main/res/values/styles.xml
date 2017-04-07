@@ -6,10 +6,135 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <!--<item name="android:colorBackground">@color/year</item>-->
     </style>
 
+    <style name="AppThemeCustom" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Main theme colors -->
+        <!--   your app branding color for the app bar -->
+        <item name="colorPrimary">@color/ORANGE</item>
+
+        <!--   darker variant for the status bar and contextual app bars -->
+        <item name="colorPrimaryDark">@color/YELLOW</item>
+
+        <!--   theme UI controls like checkboxes and text fields -->
+        <item name="colorAccent">@color/BLUEGRAY</item>
+
+<!--        <item name="colorButtonNormal">@color/RED</item>-->
+    </style>
+
+    <!-- ================================================================== -->
+
     <style name="btn">
-        <item name="android:paddingTop">30dp</item>
-        <item name="android:paddingBottom">30dp</item>
+        <item name="android:paddingTop">25dp</item>
+        <item name="android:paddingBottom">25dp</item>
+        <item name="android:layout_margin">10dp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/WHITE</item>
+        <item name="android:radius">10dip</item>
+
+        <item name="android:layout_weight">1</item>
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+    <style name="header">
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">20dp</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:textColor">@color/ORANGE</item>
+    </style>
+
+    <style name="dum">
+        <item name="android:background">#fff000</item>
+        <item name="android:height">100dp</item>
+    </style>
+
+    <style name="label">
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <!-- MATERIAL DESIGN =>-->
+    <style name="MyMaterialTheme" parent="MyMaterialTheme.Base">
+
+    </style>
+
+    <style name="MyMaterialTheme.Base" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="windowNoTitle">true</item>
+        <item name="windowActionBar">false</item>
+        <item name="colorPrimary">#F50057</item>
+        <item name="colorPrimaryDark">#C51162</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <!-- <= -->
+
+
+    <style name="GameTile">
+        <item name="android:textSize">40dp</item>
+        <item name="android:layout_gravity">fill</item>
+        <item name="android:gravity">center</item>
+        <item name="android:paddingLeft">10dp</item>
+        <item name="android:paddingRight">10dp</item>
+        <item name="android:fontFamily">Roboto-Thin</item>
+        <item name="android:background">@color/GRAY</item>
+        <item name="android:layout_margin">10dp</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+
+    </style>
+
+    <!-- ACTIVITY MAIN BUTTONS -->
+    <style name="Words.Button" parent="Widget.AppCompat.Button">
+        <item name="colorButtonNormal">@color/PURPLE</item>
+        <item name="android:textColor">@color/WHITE</item>
+        <item name="android:paddingTop">25dp</item>
+        <item name="android:paddingBottom">25dp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="CommonMistackes.Button" parent="Widget.AppCompat.Button">
+        <item name="colorButtonNormal">@color/RED</item>
+        <item name="android:textColor">@color/WHITE</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="Antonyms.Button" parent="Widget.AppCompat.Button">
+        <item name="colorButtonNormal">@color/AMBER</item>
+        <item name="android:textColor">@color/WHITE</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="Synonyms.Button" parent="Widget.AppCompat.Button">
+        <item name="colorButtonNormal">@color/BLUE</item>
+        <item name="android:textColor">@color/WHITE</item>
+        <item name="android:paddingTop">25dp</item>
+        <item name="android:paddingBottom">25dp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="Idioms.Button" parent="Widget.AppCompat.Button">
+        <item name="colorButtonNormal">@color/BROWN</item>
+        <item name="android:textColor">@color/WHITE</item>
+        <item name="android:paddingTop">25dp</item>
+        <item name="android:paddingBottom">25dp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="Slangs.Button" parent="Widget.AppCompat.Button">
+        <item name="colorButtonNormal">@color/GREEN</item>
+        <item name="android:textColor">@color/WHITE</item>
+        <item name="android:paddingTop">25dp</item>
+        <item name="android:paddingBottom">25dp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="Verbs.Button" parent="Widget.AppCompat.Button">
+        <item name="colorButtonNormal">@color/PINK</item>
+        <item name="android:textColor">@color/WHITE</item>
+        <item name="android:paddingTop">25dp</item>
+        <item name="android:paddingBottom">25dp</item>
+        <item name="android:textStyle">bold</item>
     </style>
 </resources>

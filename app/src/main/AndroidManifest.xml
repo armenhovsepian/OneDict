@@ -4,10 +4,10 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/ic_launcher_dict"
         android:label="@string/app_name"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+        android:theme="@style/AppThemeCustom">
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -17,11 +17,27 @@
 
         <activity android:name=".IdiomsActivity">
         </activity>
-
-        <activity android:name=".AntitheticalActivity">
+        <activity android:name=".IdiomActivity">
         </activity>
 
-        <activity android:name=".SynonymousActivity">
+        <activity android:name=".SlangsActivity">
+        </activity>
+        <activity android:name=".SlangActivity">
+        </activity>
+
+        <activity android:name=".AntonymsActivity">
+        </activity>
+        <activity android:name=".AntonymActivity">
+        </activity>
+
+        <activity android:name=".SynonymsActivity">
+        </activity>
+        <activity android:name=".SynonymActivity">
+        </activity>
+
+        <activity android:name=".CommonMistakesActivity">
+        </activity>
+        <activity android:name=".CommonMistakeActivity">
         </activity>
 
         <activity android:name=".VerbsActivity">

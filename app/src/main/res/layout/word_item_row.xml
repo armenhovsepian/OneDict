@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:focusable="true"
+    android:padding="10dp"
+    android:layout_marginBottom="5dp"
+    android:clickable="true"
+    android:background="@drawable/rounded_btn"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="0.1"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp">
+
+        <TextView
+            android:id="@+id/tvWord"
+            android:text="Word"
+            android:textColor="@color/title"
+            android:textSize="16dp"
+            android:textStyle="bold"
+            android:layout_alignParentTop="true"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:text="Pro"
+            android:id="@+id/tvPro"
+            android:layout_below="@id/tvWord"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:text="tran"
+            android:id="@+id/tvTrans"
+            android:textColor="@color/year"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="right" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.9"
+        android:orientation="horizontal">
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_star_off"
+            android:layout_below="@id/tvSynonym"
+            android:background="@null"
+            android:id="@+id/ibtnWordFavorite" />
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@null"
+            android:src="@drawable/ic_play"
+            android:id="@+id/ibtnWordPlay"/>
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tvSynonym"
+            android:background="@null"
+            android:src="@drawable/ic_info"
+            android:id="@+id/ibtnWordEdit" />
+
+    </LinearLayout>
+
+
+</LinearLayout>
+<!--
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:focusable="true"
+    android:padding="10dp"
+    android:layout_marginBottom="5dp"
+    android:clickable="true"
+    android:background="@drawable/rounded_btn"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/tvWord"
+        android:textColor="@color/title"
+        android:textSize="16dp"
+        android:textStyle="bold"
+        android:layout_alignParentTop="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+id/tvPro"
+        android:layout_below="@id/tvWord"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="20dp"/>
+
+    <TextView
+        android:id="@+id/tvTrans"
+        android:textColor="@color/year"
+        android:layout_width="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_height="wrap_content"
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_below="@id/tvPro">
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/btn_star_off_normal_holo_dark"
+        android:layout_weight="0.33"
+        android:background="@null"
+        android:textAlignment="gravity"
+        android:layout_gravity="left"
+        android:textDirection="ltr"
+        android:id="@+id/ibtnWordFavorite" />
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@null"
+            android:layout_weight="0.33"
+            android:src="@android:drawable/ic_media_play"
+            android:id="@+id/ibtnWordPlay"/>
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@null"
+            android:layout_weight="0.33"
+            android:src="@android:drawable/ic_menu_edit"
+            android:id="@+id/ibtnWordEdit"/>
+    </LinearLayout>
+</RelativeLayout>-->

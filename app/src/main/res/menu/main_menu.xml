@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:title="All"
+        android:id="@+id/menu_action_all"
+        android:icon="@drawable/ic_align_justify"
+        app:showAsAction="always">
+    </item>
+
+    <item android:title="Fav"
+        android:id="@+id/menu_action_fav"
+        android:icon="@drawable/btn_star_on_pressed_holo_dark"
+        app:showAsAction="always">
+    </item>
+
+    <item android:title="Sort"
+        android:id="@+id/menu_action_alpha"
+        android:icon="@drawable/ic_sort_by_alpha"
+        app:showAsAction="always">
+    </item>
+
+
+    <item android:title="Add"
+        android:id="@+id/menu_action_add"
+        android:icon="@drawable/ic_menu_add">
+    </item>
+
+    <item android:title="Sync"
+        android:id="@+id/menu_action_sync"
+        android:icon="@drawable/ic_popup_sync_1">
+    </item>
+</menu>

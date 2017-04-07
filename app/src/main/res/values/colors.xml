@@ -3,10 +3,35 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
+
     <color name="year">#999999</color>
     <color name="title">#222222</color>
 
-    <color name="red">#E64320</color>
-    <color name="green">#5fba7d</color>
-    <color name="yellow">#fff000</color>
+
+    <!--materialpallete.com-->
+    <color name="RED">#FF5252</color>
+    <color name="PINK">#E91E63</color>
+    <color name="PURPLE">#E040FB</color>
+    <color name="DEEPPURPLE">#673AB7</color>
+    <color name="INDIGO">#536DFE</color>
+    <color name="BLUE">#2196F3</color>
+    <color name="LIGHTBLUE">#03A9F4</color>
+    <color name="CYAN">#00BCD4</color>
+    <color name="TEAL">#009688</color>
+    <color name="GREEN">#4CAF50</color>
+    <color name="LIGHTGREEN">#8BC34A</color>
+    <color name="LIME">#CDDC39</color>
+    <color name="YELLOW">#FFEB3B</color>
+    <color name="AMBER">#FFA000</color>
+    <color name="ORANGE">#FF9800</color>
+    <color name="DEEPORANGE">#FF5722</color>
+    <color name="BROWN">#795548</color>
+    <color name="GRAY">#9E9E9E</color>
+    <color name="BLUEGRAY">#607D8B</color>
+    <color name="LIGHTGRAY">#F5F5F5</color>
+
+    <color name="WHITE">#FFFFFF</color>
+
+    <color name="DARKGRAY">#263238</color>
+
 </resources>

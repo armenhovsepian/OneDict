@@ -1,9 +1,12 @@
 <resources>
-    <string name="app_name">One Dic</string>
-    <string name="antonym">Antonym\nمتضاد</string>
-    <string name="synonym">Synonym\nمترادف</string>
+    <string name="app_name">One Dict</string>
+
+    <string name="antonyms">Antonyms\nمتضاد</string>
+    <string name="synonyms">Synonyms\nمترادف</string>
     <string name="idioms">Idioms\nاصطلاحات</string>
-    <string name="common">Common\nعبارات رایج</string>
+    <string name="slangs">Slangs\nاصطلاحات عامیانه</string>
+    <string name="common">Commons\nعبارات رایج</string>
+    <string name="commonMistakes">Common Mistakes\nاشتباهات رایج</string>
     <string name="words">Words\nلغات</string>
     <string name="verbs">Verbs\nافعال</string>
 
@@ -13,11 +16,22 @@
     <string name="lblDescription">توضیحات</string>
     <string name="lblPronunciation">تلفظ</string>
     <string name="lblIdiom">اصطلاح</string>
+    <string name="lblSlang">اصطلاح عامیانه</string>
     <string name="lblCommon">عبارت</string>
+    <string name="lblAntoym">متضاد</string>
+    <string name="lblSynonym">مترادف</string>
     <string name="lblVerb">فعل</string>
 
+    <string name="addToFavorites">Added to Favorites</string>
+    <string name="removedFromFavorites">Removed from Favorites</string>
+    <string name="saveChanges">Save Changes</string>
+    <string name="removedFromCollection">Removed from Collection</string>
 
     <string name="save">ذخیره</string>
+    <string name="really_delete">آیا می خواهید حذف شود؟</string>
+    <string name="delete">حذف</string>
+    <string name="yes">بلی</string>
+    <string name="no">خیر</string>
 
     <string-array name="category_array">
         <item>Computer</item>
