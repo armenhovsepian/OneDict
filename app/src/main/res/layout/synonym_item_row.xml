@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:focusable="true"
+    android:padding="10dp"
+    android:layout_marginBottom="5dp"
+    android:clickable="true"
+    android:background="@drawable/rounded_btn"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/ic_expand_more" />
+
+        <TextView
+            android:text="Title"
+            android:id="@+id/tvSynonymTitle"
+            android:textColor="@color/title"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center" />
+
+        <TextView
+            android:text="SynonymTitleTranslation"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/tvSynonymTitleTranslation"
+            android:layout_marginRight="5dp"
+            android:gravity="center|right" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/ic_expand_less" />
+
+        <TextView
+            android:text="Synonym"
+            android:id="@+id/tvSynonym"
+            android:textColor="@color/year"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center" />
+
+        <TextView
+            android:text="SynonymTranslation"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/tvSynonymTranslation"
+            android:layout_marginRight="5dp"
+            android:gravity="center|right" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_star_off"
+            android:layout_below="@id/tvSynonym"
+            android:background="@null"
+            android:id="@+id/ibtnSynonymFavorite" />
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@null"
+            android:src="@drawable/ic_play"
+            android:id="@+id/ibtnSynonymPlay"/>
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tvSynonym"
+            android:background="@null"
+            android:src="@drawable/ic_info"
+            android:id="@+id/ibtnSynonymEdit" />
+    </LinearLayout>
+
+</LinearLayout>
