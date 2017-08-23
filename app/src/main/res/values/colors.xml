@@ -34,4 +34,6 @@
 
     <color name="DARKGRAY">#263238</color>
 
+    <color name="BG">#B2EBF2</color>
+
 </resources>

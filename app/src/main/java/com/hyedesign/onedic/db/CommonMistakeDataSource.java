@@ -3,6 +3,7 @@ package com.hyedesign.onedic.db;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
+import android.database.DatabaseUtils;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.support.annotation.NonNull;
@@ -29,15 +30,23 @@ public class CommonMistakeDataSource implements IDataSource <CommonMistake> {
             OneDicDBOpenHelper.COLUMN_TITLE,
             OneDicDBOpenHelper.COLUMN_COMMONMISTAKE,
             OneDicDBOpenHelper.COLUMN_DESCRIPTION,
-            OneDicDBOpenHelper.COLUMN_ISDELETED,
             OneDicDBOpenHelper.COLUMN_ISFAVORITE,
-            OneDicDBOpenHelper.COLUMN_ISSYNCED,
-            OneDicDBOpenHelper.COLUMN_CREATED,
-            OneDicDBOpenHelper.COLUMN_MODIFIED
+            //OneDicDBOpenHelper.COLUMN_ISDELETED,
+            //OneDicDBOpenHelper.COLUMN_ISSYNCED,
+            //OneDicDBOpenHelper.COLUMN_CREATED,
+            //OneDicDBOpenHelper.COLUMN_MODIFIED
     };
 
     public CommonMistakeDataSource(Context context){
         dbHelper = new OneDicDBOpenHelper(context);
+    }
+
+    @Override
+    public int getCount() {
+        open();
+        int count = (int) DatabaseUtils.longForQuery(database, "SELECT COUNT(*) FROM " + OneDicDBOpenHelper.TABLE_COMMONMISTAKE, null);
+        close();
+        return count;
     }
 
     @Override
@@ -47,11 +56,11 @@ public class CommonMistakeDataSource implements IDataSource <CommonMistake> {
         values.put(OneDicDBOpenHelper.COLUMN_TITLE,model.getTitle());
         values.put(OneDicDBOpenHelper.COLUMN_COMMONMISTAKE,model.getCommonMistake());
         values.put(OneDicDBOpenHelper.COLUMN_DESCRIPTION,model.getDescription());
-        values.put(OneDicDBOpenHelper.COLUMN_ISDELETED, 0);
         values.put(OneDicDBOpenHelper.COLUMN_ISFAVORITE, 0);
-        values.put(OneDicDBOpenHelper.COLUMN_ISSYNCED, 0);
-        SimpleDateFormat sdfr = new SimpleDateFormat("dd/MM/yyyy");
-        values.put(OneDicDBOpenHelper.COLUMN_CREATED, sdfr.format(new Date()));
+        //values.put(OneDicDBOpenHelper.COLUMN_ISDELETED, 0);
+        //values.put(OneDicDBOpenHelper.COLUMN_ISSYNCED, 0);
+        //SimpleDateFormat sdfr = new SimpleDateFormat("dd/MM/yyyy");
+        //values.put(OneDicDBOpenHelper.COLUMN_CREATED, sdfr.format(new Date()));
         long id = database.insert(OneDicDBOpenHelper.TABLE_COMMONMISTAKE,null,values);
         model.setId(id);
         close();
@@ -65,8 +74,8 @@ public class CommonMistakeDataSource implements IDataSource <CommonMistake> {
         values.put(OneDicDBOpenHelper.COLUMN_TITLE,model.getTitle());
         values.put(OneDicDBOpenHelper.COLUMN_COMMONMISTAKE,model.getCommonMistake());
         values.put(OneDicDBOpenHelper.COLUMN_DESCRIPTION,model.getDescription());
-        SimpleDateFormat sdfr = new SimpleDateFormat("dd/MM/yyyy");
-        values.put(OneDicDBOpenHelper.COLUMN_MODIFIED,sdfr.format(new Date()));
+        //SimpleDateFormat sdfr = new SimpleDateFormat("dd/MM/yyyy");
+        //values.put(OneDicDBOpenHelper.COLUMN_MODIFIED,sdfr.format(new Date()));
         database.update(OneDicDBOpenHelper.TABLE_COMMONMISTAKE,
                 values,
                 OneDicDBOpenHelper.COLUMN_ID + "=?",
@@ -87,6 +96,15 @@ public class CommonMistakeDataSource implements IDataSource <CommonMistake> {
     }
 
     @Override
+    public void delete() {
+        open();
+        database.delete(OneDicDBOpenHelper.TABLE_COMMONMISTAKE,
+                null,
+                null);
+        close();
+    }
+
+    @Override
     public CommonMistake getById(long id) {
         open();
         String selectQuery = "SELECT * FROM " + OneDicDBOpenHelper.TABLE_COMMONMISTAKE  + " WHERE "
@@ -102,11 +120,11 @@ public class CommonMistakeDataSource implements IDataSource <CommonMistake> {
         model.setTitle(cursor.getString(cursor.getColumnIndex(OneDicDBOpenHelper.COLUMN_TITLE)));
         model.setCommonMistake(cursor.getString(cursor.getColumnIndex(OneDicDBOpenHelper.COLUMN_COMMONMISTAKE)));
         model.setDescription(cursor.getString(cursor.getColumnIndex(OneDicDBOpenHelper.COLUMN_DESCRIPTION)));
-        model.setCreated(cursor.getString(cursor.getColumnIndex(OneDicDBOpenHelper.COLUMN_CREATED)));
-        model.setModified(cursor.getString(cursor.getColumnIndex(OneDicDBOpenHelper.COLUMN_MODIFIED)));
-        model.setDeleted(cursor.getInt(cursor.getColumnIndex(OneDicDBOpenHelper.COLUMN_ISDELETED)));
         model.setFavorite(cursor.getInt(cursor.getColumnIndex(OneDicDBOpenHelper.COLUMN_ISFAVORITE)));
-        model.setSynced(cursor.getInt(cursor.getColumnIndex(OneDicDBOpenHelper.COLUMN_ISSYNCED)));
+        //model.setCreated(cursor.getString(cursor.getColumnIndex(OneDicDBOpenHelper.COLUMN_CREATED)));
+        //model.setModified(cursor.getString(cursor.getColumnIndex(OneDicDBOpenHelper.COLUMN_MODIFIED)));
+        //model.setDeleted(cursor.getInt(cursor.getColumnIndex(OneDicDBOpenHelper.COLUMN_ISDELETED)));
+        //model.setSynced(cursor.getInt(cursor.getColumnIndex(OneDicDBOpenHelper.COLUMN_ISSYNCED)));
 
         close();
         return model;
@@ -136,11 +154,11 @@ public class CommonMistakeDataSource implements IDataSource <CommonMistake> {
                 model.setTitle(cursor.getString(cursor.getColumnIndex(OneDicDBOpenHelper.COLUMN_TITLE)));
                 model.setCommonMistake(cursor.getString(cursor.getColumnIndex(OneDicDBOpenHelper.COLUMN_COMMONMISTAKE)));
                 model.setDescription(cursor.getString(cursor.getColumnIndex(OneDicDBOpenHelper.COLUMN_DESCRIPTION)));
-                model.setCreated(cursor.getString(cursor.getColumnIndex(OneDicDBOpenHelper.COLUMN_CREATED)));
-                model.setModified(cursor.getString(cursor.getColumnIndex(OneDicDBOpenHelper.COLUMN_MODIFIED)));
-                model.setDeleted(cursor.getInt(cursor.getColumnIndex(OneDicDBOpenHelper.COLUMN_ISDELETED)));
                 model.setFavorite(cursor.getInt(cursor.getColumnIndex(OneDicDBOpenHelper.COLUMN_ISFAVORITE)));
-                model.setSynced(cursor.getInt(cursor.getColumnIndex(OneDicDBOpenHelper.COLUMN_ISSYNCED)));
+                //model.setCreated(cursor.getString(cursor.getColumnIndex(OneDicDBOpenHelper.COLUMN_CREATED)));
+                //model.setModified(cursor.getString(cursor.getColumnIndex(OneDicDBOpenHelper.COLUMN_MODIFIED)));
+                //model.setDeleted(cursor.getInt(cursor.getColumnIndex(OneDicDBOpenHelper.COLUMN_ISDELETED)));
+                //model.setSynced(cursor.getInt(cursor.getColumnIndex(OneDicDBOpenHelper.COLUMN_ISSYNCED)));
                 antonyms.add(model);
             }
         }
@@ -164,7 +182,7 @@ public class CommonMistakeDataSource implements IDataSource <CommonMistake> {
     public void synce(long id) {
         open();
         ContentValues values = new ContentValues();
-        values.put(OneDicDBOpenHelper.COLUMN_ISSYNCED,"1");
+        //values.put(OneDicDBOpenHelper.COLUMN_ISSYNCED,"1");
         database.update(OneDicDBOpenHelper.TABLE_COMMONMISTAKE,
                 values,
                 OneDicDBOpenHelper.COLUMN_ID + "=?",
@@ -176,7 +194,7 @@ public class CommonMistakeDataSource implements IDataSource <CommonMistake> {
     public void softDelete(long id) {
         open();
         ContentValues values = new ContentValues();
-        values.put(OneDicDBOpenHelper.COLUMN_ISDELETED,"1");
+        //values.put(OneDicDBOpenHelper.COLUMN_ISDELETED,"1");
         database.update(OneDicDBOpenHelper.TABLE_COMMONMISTAKE,
                 values,
                 OneDicDBOpenHelper.COLUMN_ID + "=?",

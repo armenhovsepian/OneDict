@@ -2,10 +2,12 @@ package com.hyedesign.onedic;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.ActionBar;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
 import android.widget.TextView;
 
 import com.hyedesign.onedic.adapter.AntonymAdapter;
@@ -23,8 +25,6 @@ public class AntonymsActivity extends BaseMenuActivity {
     private RecyclerView mRecyclerView;
     private RecyclerView.Adapter mAdapter;
 
-    TextView antonymTotal;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,10 +33,10 @@ public class AntonymsActivity extends BaseMenuActivity {
         initialize();
 
         models = dataSource.getAll();
-        if(models.size() == 0){
+/*        if(models.size() == 0){
             dataSource.seed();
             models = dataSource.getAll();
-        }
+        }*/
 
         refreshDisplay();
 
@@ -44,13 +44,20 @@ public class AntonymsActivity extends BaseMenuActivity {
 
     private void initialize() {
         dataSource = new AntonymDataSource(this);
-        antonymTotal = (TextView)findViewById(R.id.tvAntonymTotal);
         mRecyclerView = (RecyclerView) findViewById(R.id.antonym_recycler_view);
 
         ActionBar actionBar = getSupportActionBar();
         actionBar.setTitle("Antonyms");
         actionBar.setHomeButtonEnabled(true);
         actionBar.setDisplayHomeAsUpEnabled(true);
+
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getApplicationContext(),AntonymActivity.class));
+            }
+        });
     }
 
     @Override
@@ -61,7 +68,6 @@ public class AntonymsActivity extends BaseMenuActivity {
 
     @Override
     public void refreshDisplay() {
-        antonymTotal.setText(String.valueOf(models.size()));
         List<Antonym> antonyms = (List<Antonym>) (List<?>)models;
 
         mAdapter = new AntonymAdapter(antonyms);

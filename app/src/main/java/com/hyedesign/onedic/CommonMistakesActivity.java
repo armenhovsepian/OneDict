@@ -2,10 +2,12 @@ package com.hyedesign.onedic;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.ActionBar;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
 import android.widget.TextView;
 
 import com.hyedesign.onedic.adapter.CommonMistakeAdapter;
@@ -23,8 +25,6 @@ public class CommonMistakesActivity extends BaseMenuActivity {
     private RecyclerView mRecyclerView;
     private RecyclerView.Adapter mAdapter;
 
-    TextView commonMiskateTotal;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,17 +32,15 @@ public class CommonMistakesActivity extends BaseMenuActivity {
         initialize();
 
         models = dataSource.getAll();
-        if(models.size() == 0){
+/*        if(models.size() == 0){
             dataSource.seed();
             models = dataSource.getAll();
-        }
+        }*/
         refreshDisplay();
     }
 
     @Override
     public void refreshDisplay() {
-        commonMiskateTotal.setText(String.valueOf(models.size()));
-
         List<CommonMistake> commonMistakes = (List<CommonMistake>)(List<?>) models;
         mAdapter = new CommonMistakeAdapter(commonMistakes);
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
@@ -58,7 +56,6 @@ public class CommonMistakesActivity extends BaseMenuActivity {
 
     private void initialize() {
         dataSource = new CommonMistakeDataSource(this);
-        commonMiskateTotal = (TextView)findViewById(R.id.tvCommonMistakeTotal);
         mRecyclerView = (RecyclerView) findViewById(R.id.commonMistake_recycler_view);
 
         //setTitle("Idioms");
@@ -66,6 +63,14 @@ public class CommonMistakesActivity extends BaseMenuActivity {
         actionBar.setTitle("Common Mistakes");
         actionBar.setHomeButtonEnabled(true);
         actionBar.setDisplayHomeAsUpEnabled(true);
+
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getApplicationContext(),CommonMistakeActivity.class));
+            }
+        });
     }
 
 

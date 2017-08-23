@@ -6,21 +6,31 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
-        <!--<item name="android:colorBackground">@color/year</item>-->
+
     </style>
+
+    <style name="AppTheme.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="colorPrimary">@color/CYAN</item>
+        <item name="colorAccent">@color/INDIGO</item>
+    </style>
+
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
     <style name="AppThemeCustom" parent="Theme.AppCompat.Light.DarkActionBar">
         <!-- Main theme colors -->
         <!--   your app branding color for the app bar -->
-        <item name="colorPrimary">@color/ORANGE</item>
+        <item name="colorPrimary">@color/CYAN</item>
 
         <!--   darker variant for the status bar and contextual app bars -->
         <item name="colorPrimaryDark">@color/YELLOW</item>
 
         <!--   theme UI controls like checkboxes and text fields -->
-        <item name="colorAccent">@color/BLUEGRAY</item>
+        <item name="colorAccent">@color/INDIGO</item>
 
-<!--        <item name="colorButtonNormal">@color/RED</item>-->
     </style>
 
     <!-- ================================================================== -->
@@ -136,5 +146,15 @@
         <item name="android:paddingTop">25dp</item>
         <item name="android:paddingBottom">25dp</item>
         <item name="android:textStyle">bold</item>
+    </style>
+
+
+    <style name="ItemRow">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:padding">10dp</item>
+        <item name="android:layout_marginBottom">5dp</item>
+        <item name="android:background">@drawable/rounded_btn</item>
+
     </style>
 </resources>

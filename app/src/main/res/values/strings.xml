@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">One Dict</string>
+    <string name="app_name">One English</string>
 
     <string name="antonyms">Antonyms\nمتضاد</string>
     <string name="synonyms">Synonyms\nمترادف</string>
@@ -32,6 +32,10 @@
     <string name="delete">حذف</string>
     <string name="yes">بلی</string>
     <string name="no">خیر</string>
+    <string name="action_settings">Setttings</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
 
     <string-array name="category_array">
         <item>Computer</item>

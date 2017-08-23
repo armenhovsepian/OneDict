@@ -3,6 +3,7 @@ package com.hyedesign.onedic.db;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
+import android.database.DatabaseUtils;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.support.annotation.NonNull;
@@ -23,7 +24,7 @@ import java.util.List;
 public class WordDataSource implements IDataSource<Word> {
 
     SQLiteOpenHelper dbHelper = null;
-    SQLiteDatabase database = null;
+    static SQLiteDatabase database = null;
 
     private static final String[] allColumns ={
             OneDicDBOpenHelper.COLUMN_ID,
@@ -31,11 +32,11 @@ public class WordDataSource implements IDataSource<Word> {
             OneDicDBOpenHelper.COLUMN_PRONUNCIATION,
             OneDicDBOpenHelper.COLUMN_TRANSLATION,
             OneDicDBOpenHelper.COLUMN_DESCRIPTION,
-            OneDicDBOpenHelper.COLUMN_ISDELETED,
             OneDicDBOpenHelper.COLUMN_ISFAVORITE,
-            OneDicDBOpenHelper.COLUMN_ISSYNCED,
-            OneDicDBOpenHelper.COLUMN_CREATED,
-            OneDicDBOpenHelper.COLUMN_MODIFIED
+            //OneDicDBOpenHelper.COLUMN_ISDELETED,
+            //OneDicDBOpenHelper.COLUMN_ISSYNCED,
+            //OneDicDBOpenHelper.COLUMN_CREATED,
+            //OneDicDBOpenHelper.COLUMN_MODIFIED
     };
 
     public WordDataSource(Context context){
@@ -52,6 +53,30 @@ public class WordDataSource implements IDataSource<Word> {
         dbHelper.close();
     }
 
+    //public static long queryNumEntries (SQLiteDatabase db, String table, String selection)
+    public static long queryNumEntries(){
+        int numRows = (int)DatabaseUtils.longForQuery(database, "SELECT COUNT(*) FROM " + OneDicDBOpenHelper.TABLE_WORD, null);
+        return numRows;
+    }
+
+    @Override
+    public int getCount() {
+        open();
+        int count = (int)DatabaseUtils.longForQuery(database, "SELECT COUNT(*) FROM " + OneDicDBOpenHelper.TABLE_WORD, null);
+
+/*        int count = 100;
+        String selectQuery = "SELECT Count(*) FROM " + OneDicDBOpenHelper.TABLE_SYNONYM ;
+        Cursor cursor = database.rawQuery(selectQuery,null);
+
+        if(cursor != null) {
+            cursor.moveToFirst();
+            count = cursor.getCount();
+        }*/
+
+        close();
+        return count;
+    }
+
     @Override
     public Word create(Word model){
         open();
@@ -60,11 +85,11 @@ public class WordDataSource implements IDataSource<Word> {
         values.put(OneDicDBOpenHelper.COLUMN_PRONUNCIATION,model.getPronunciation());
         values.put(OneDicDBOpenHelper.COLUMN_TRANSLATION,model.getTranslation());
         values.put(OneDicDBOpenHelper.COLUMN_DESCRIPTION,model.getDescription());
-        values.put(OneDicDBOpenHelper.COLUMN_ISDELETED, 0);
         values.put(OneDicDBOpenHelper.COLUMN_ISFAVORITE, model.getFavorite()?"1":"0");
-        values.put(OneDicDBOpenHelper.COLUMN_ISSYNCED, 0);
-        SimpleDateFormat sdfr = new SimpleDateFormat("dd/MM/yyyy");
-        values.put(OneDicDBOpenHelper.COLUMN_CREATED, sdfr.format(new Date()));
+        //values.put(OneDicDBOpenHelper.COLUMN_ISDELETED, 0);
+        //values.put(OneDicDBOpenHelper.COLUMN_ISSYNCED, 0);
+        //SimpleDateFormat sdfr = new SimpleDateFormat("dd/MM/yyyy");
+        //values.put(OneDicDBOpenHelper.COLUMN_CREATED, sdfr.format(new Date()));
         long id = database.insert(OneDicDBOpenHelper.TABLE_WORD,null,values);
         model.setId(id);
         Log.i(LOGTAG,"word created with id " + model.getId());
@@ -80,8 +105,8 @@ public class WordDataSource implements IDataSource<Word> {
         values.put(OneDicDBOpenHelper.COLUMN_PRONUNCIATION,model.getPronunciation());
         values.put(OneDicDBOpenHelper.COLUMN_TRANSLATION,model.getTranslation());
         values.put(OneDicDBOpenHelper.COLUMN_DESCRIPTION,model.getDescription());
-        SimpleDateFormat sdfr = new SimpleDateFormat("dd/MM/yyyy");
-        values.put(OneDicDBOpenHelper.COLUMN_MODIFIED,sdfr.format(new Date()));
+        //SimpleDateFormat sdfr = new SimpleDateFormat("dd/MM/yyyy");
+        //values.put(OneDicDBOpenHelper.COLUMN_MODIFIED,sdfr.format(new Date()));
         database.update(OneDicDBOpenHelper.TABLE_WORD,
                 values,
                 OneDicDBOpenHelper.COLUMN_ID + "=?",
@@ -97,6 +122,15 @@ public class WordDataSource implements IDataSource<Word> {
         database.delete(OneDicDBOpenHelper.TABLE_WORD,
                 OneDicDBOpenHelper.COLUMN_ID + "=?",
                 new String[] { String.valueOf(id) });
+        close();
+    }
+
+    @Override
+    public void delete() {
+        open();
+        database.delete(OneDicDBOpenHelper.TABLE_WORD,
+                null,
+                null);
         close();
     }
 
@@ -124,11 +158,11 @@ public class WordDataSource implements IDataSource<Word> {
                 model.setPronunciation(cursor.getString(cursor.getColumnIndex(OneDicDBOpenHelper.COLUMN_PRONUNCIATION)));
                 model.setTranslation(cursor.getString(cursor.getColumnIndex(OneDicDBOpenHelper.COLUMN_TRANSLATION)));
                 model.setDescription(cursor.getString(cursor.getColumnIndex(OneDicDBOpenHelper.COLUMN_DESCRIPTION)));
-                model.setCreated(cursor.getString(cursor.getColumnIndex(OneDicDBOpenHelper.COLUMN_CREATED)));
-                model.setModified(cursor.getString(cursor.getColumnIndex(OneDicDBOpenHelper.COLUMN_MODIFIED)));
-                model.setDeleted(cursor.getInt(cursor.getColumnIndex(OneDicDBOpenHelper.COLUMN_ISDELETED)));
                 model.setFavorite(cursor.getInt(cursor.getColumnIndex(OneDicDBOpenHelper.COLUMN_ISFAVORITE)));
-                model.setSynced(cursor.getInt(cursor.getColumnIndex(OneDicDBOpenHelper.COLUMN_ISSYNCED)));
+                //model.setCreated(cursor.getString(cursor.getColumnIndex(OneDicDBOpenHelper.COLUMN_CREATED)));
+                //model.setModified(cursor.getString(cursor.getColumnIndex(OneDicDBOpenHelper.COLUMN_MODIFIED)));
+                //model.setDeleted(cursor.getInt(cursor.getColumnIndex(OneDicDBOpenHelper.COLUMN_ISDELETED)));
+                //model.setSynced(cursor.getInt(cursor.getColumnIndex(OneDicDBOpenHelper.COLUMN_ISSYNCED)));
                 words.add(model);
             }
         }
@@ -152,7 +186,7 @@ public class WordDataSource implements IDataSource<Word> {
     public void synce(long id) {
         open();
         ContentValues values = new ContentValues();
-        values.put(OneDicDBOpenHelper.COLUMN_ISSYNCED,"1");
+        //values.put(OneDicDBOpenHelper.COLUMN_ISSYNCED,"1");
         database.update(OneDicDBOpenHelper.TABLE_WORD,
                 values,
                 OneDicDBOpenHelper.COLUMN_ID + "=?",
@@ -164,7 +198,7 @@ public class WordDataSource implements IDataSource<Word> {
     public void softDelete(long id) {
         open();
         ContentValues values = new ContentValues();
-        values.put(OneDicDBOpenHelper.COLUMN_ISDELETED,"1");
+        //values.put(OneDicDBOpenHelper.COLUMN_ISDELETED,"1");
         database.update(OneDicDBOpenHelper.TABLE_WORD,values,OneDicDBOpenHelper.COLUMN_ID + "=?",
                 new String[]{String.valueOf(id)});
         close();
@@ -183,7 +217,7 @@ public class WordDataSource implements IDataSource<Word> {
                 OneDicDBOpenHelper.COLUMN_ID + "=?",
                 new String[]{String.valueOf(id)});
         */
-        long myid=database.update(OneDicDBOpenHelper.TABLE_WORD, values, OneDicDBOpenHelper.COLUMN_ID + "=?",
+        long myid = database.update(OneDicDBOpenHelper.TABLE_WORD, values, OneDicDBOpenHelper.COLUMN_ID + "=?",
                 new String[]{String.valueOf(id)});
 
         close();
@@ -229,11 +263,11 @@ public class WordDataSource implements IDataSource<Word> {
         word.setPronunciation(cursor.getString(cursor.getColumnIndex(OneDicDBOpenHelper.COLUMN_PRONUNCIATION)));
         word.setTranslation(cursor.getString(cursor.getColumnIndex(OneDicDBOpenHelper.COLUMN_TRANSLATION)));
         word.setDescription(cursor.getString(cursor.getColumnIndex(OneDicDBOpenHelper.COLUMN_DESCRIPTION)));
-        word.setCreated(cursor.getString(cursor.getColumnIndex(OneDicDBOpenHelper.COLUMN_CREATED)));
-        word.setModified(cursor.getString(cursor.getColumnIndex(OneDicDBOpenHelper.COLUMN_MODIFIED)));
-        word.setDeleted(cursor.getInt(cursor.getColumnIndex(OneDicDBOpenHelper.COLUMN_ISDELETED)));
         word.setFavorite(cursor.getInt(cursor.getColumnIndex(OneDicDBOpenHelper.COLUMN_ISFAVORITE)));
-        word.setSynced(cursor.getInt(cursor.getColumnIndex(OneDicDBOpenHelper.COLUMN_ISSYNCED)));
+        //word.setCreated(cursor.getString(cursor.getColumnIndex(OneDicDBOpenHelper.COLUMN_CREATED)));
+        //word.setModified(cursor.getString(cursor.getColumnIndex(OneDicDBOpenHelper.COLUMN_MODIFIED)));
+        //word.setDeleted(cursor.getInt(cursor.getColumnIndex(OneDicDBOpenHelper.COLUMN_ISDELETED)));
+        //word.setSynced(cursor.getInt(cursor.getColumnIndex(OneDicDBOpenHelper.COLUMN_ISSYNCED)));
 
         close();
         return word;
